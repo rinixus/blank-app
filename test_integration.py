@@ -67,5 +67,12 @@ class TestMixMovie(unittest.TestCase):
         self.assertEqual(len(public_movies), 1)
         self.assertEqual(public_movies.iloc[0]['title'], "My Movie")
 
+
+    def test_icaros_guide_content(self):
+        guide = generator.build_icaros_flowey_guide(hero_name="Frisk")
+        self.assertIn("Ícaros", guide)
+        self.assertIn("Flowey", guide)
+        self.assertIn("Frisk", guide)
+
 if __name__ == '__main__':
     unittest.main()

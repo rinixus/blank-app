@@ -37,7 +37,12 @@ LANG = {
         'download': "Download",
         'watch': "Watch",
         'no_movies': "No movies created yet. Go to the Studio!",
-        'toggle_lang': "Language/Idioma"
+        'toggle_lang': "Language/Idioma",
+        'icaros_mode': "👼 Narrator Mod: Ícaros vs Flowey",
+        'hero_name': "Hero Name",
+        'hero_help': "How Ícaros should address you in the story.",
+        'icaros_ready': "Ícaros mod generated! Follow the guide to defeat Flowey.",
+        'download_guide': "Download Ícaros Guide"
     },
     'pt': {
         'title': "MIXMOVIE.AI",
@@ -61,7 +66,12 @@ LANG = {
         'download': "Baixar",
         'watch': "Assistir",
         'no_movies': "Nenhum filme criado ainda. Vá ao Estúdio!",
-        'toggle_lang': "Language/Idioma"
+        'toggle_lang': "Language/Idioma",
+        'icaros_mode': "👼 Mod Narrador: Ícaros vs Flowey",
+        'hero_name': "Nome do Herói",
+        'hero_help': "Como Ícaros deve chamar você na história.",
+        'icaros_ready': "Mod de Ícaros gerado! Siga o guia para derrotar Flowey.",
+        'download_guide': "Baixar Guia do Ícaros"
     }
 }
 
@@ -69,11 +79,13 @@ LANG = {
 if 'lang' not in st.session_state:
     st.session_state['lang'] = 'en'
 
+
 def toggle_language():
     if st.session_state['lang'] == 'en':
         st.session_state['lang'] = 'pt'
     else:
         st.session_state['lang'] = 'en'
+
 
 text = LANG[st.session_state['lang']]
 
@@ -92,7 +104,7 @@ if user:
     if st.sidebar.button(text['logout']):
         auth.logout()
 else:
-    page = text['nav_home'] # Non-logged users can see Home
+    page = text['nav_home']  # Non-logged users can see Home
     st.sidebar.warning(text['login_msg'])
 
 # --- Pages ---
@@ -142,6 +154,9 @@ elif page == text['nav_studio']:
         with col3:
             year = st.text_input(text['input_year'], "2024")
 
+        icaros_mode = st.checkbox(text['icaros_mode'])
+        hero_name = st.text_input(text['hero_name'], "Frisk", help=text['hero_help'])
+
         submitted = st.form_submit_button(text['btn_generate'])
 
         if submitted and title:
@@ -153,6 +168,20 @@ elif page == text['nav_studio']:
 
             st.success(f"Movie '{title}' generated successfully!")
             st.video(video_path)
+
+            if icaros_mode:
+                guide_text = generator.build_icaros_flowey_guide(hero_name=hero_name or "alma humana")
+                guide_path = generator.save_icaros_guide(user['email'], title, hero_name=hero_name or "alma humana")
+                st.success(text['icaros_ready'])
+                st.code(guide_text)
+
+                with open(guide_path, "rb") as file:
+                    st.download_button(
+                        label=text['download_guide'],
+                        data=file,
+                        file_name=os.path.basename(guide_path),
+                        mime="text/plain"
+                    )
 
 # 3. MY LIBRARY
 elif page == text['nav_library']:
