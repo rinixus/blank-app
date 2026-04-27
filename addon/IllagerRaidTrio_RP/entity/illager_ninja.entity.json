@@ -1,0 +1,22 @@
+{
+  "format_version": "1.20.40",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "irt:illager_ninja",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/illager/pillager"
+      },
+      "geometry": {
+        "default": "geometry.illager_ninja"
+      },
+      "render_controllers": ["controller.render.default"],
+      "spawn_egg": {
+        "base_color": "#555753",
+        "overlay_color": "#111111"
+      }
+    }
+  }
+}

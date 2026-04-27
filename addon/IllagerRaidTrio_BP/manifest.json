@@ -1,0 +1,23 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Illager Raid Trio BP",
+    "description": "Adiciona 3 novos illagers para raids: Palhaço, Super-Herói e Ninja.",
+    "uuid": "4e8f95aa-8b83-4f84-bff7-cb5fbd8f8a10",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 20, 30]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "2da8cabf-2da8-45bb-99ca-20e141f83a2f",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "ff5cb410-7ea2-4af6-b663-cce0f8fb96e7",
+      "version": [1, 0, 0]
+    }
+  ]
+}

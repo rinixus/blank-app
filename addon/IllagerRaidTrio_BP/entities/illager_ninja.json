@@ -1,0 +1,63 @@
+{
+  "format_version": "1.20.40",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "irt:illager_ninja",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "irt:raid_member": {
+        "minecraft:can_join_raid": {},
+        "minecraft:celebrate_hunt": {}
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": ["illager", "monster"]
+      },
+      "minecraft:nameable": {},
+      "minecraft:health": {
+        "value": 24,
+        "max": 24
+      },
+      "minecraft:movement": {
+        "value": 0.38
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 1.95
+      },
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_damage_blocks": true,
+        "can_walk_in_lava": false
+      },
+      "minecraft:attack": {
+        "damage": 5
+      },
+      "minecraft:knockback_resistance": {
+        "value": 0.2
+      },
+      "minecraft:behavior.float": {"priority": 0},
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 1,
+        "entity_types": [
+          {"filters": {"test": "is_family", "subject": "other", "value": "player"}, "max_dist": 26},
+          {"filters": {"test": "is_family", "subject": "other", "value": "villager"}, "max_dist": 26},
+          {"filters": {"test": "is_family", "subject": "other", "value": "iron_golem"}, "max_dist": 26}
+        ]
+      },
+      "minecraft:behavior.melee_attack": {"priority": 2, "speed_multiplier": 1.45, "track_target": true},
+      "minecraft:behavior.random_stroll": {"priority": 6, "speed_multiplier": 1.1},
+      "minecraft:behavior.look_at_player": {"priority": 7, "look_distance": 8.0, "probability": 0.03},
+      "minecraft:behavior.random_look_around": {"priority": 8}
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {"component_groups": ["irt:raid_member"]}
+      }
+    }
+  }
+}

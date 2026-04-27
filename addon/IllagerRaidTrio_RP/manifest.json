@@ -1,0 +1,17 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Illager Raid Trio RP",
+    "description": "Modelos e visuais dos illagers Palhaço, Super-Herói e Ninja.",
+    "uuid": "ff5cb410-7ea2-4af6-b663-cce0f8fb96e7",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 20, 30]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "f6892f18-5f80-4a11-b980-b8fd6764b4f2",
+      "version": [1, 0, 0]
+    }
+  ]
+}
