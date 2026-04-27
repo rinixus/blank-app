@@ -1,0 +1,32 @@
+{
+  "events": [
+    {
+      "id": "edu_watch_spawn_1",
+      "trigger": {
+        "room": "RUINS_HALL_03",
+        "player_x_min": 220,
+        "player_x_max": 360
+      },
+      "actions": [
+        {"type": "spawn", "entity": "edu_laranja", "x": "player_x+120", "y": "player_y-30"},
+        {"type": "set_flag", "name": "edu_seen_once", "value": true},
+        {"type": "despawn_after", "entity": "edu_laranja", "frames": 60}
+      ]
+    },
+    {
+      "id": "edu_ghost_scene",
+      "requires": ["edu_seen_once"],
+      "trigger": {
+        "room": "RUINS_CROSSROAD",
+        "player_y_max": 160
+      },
+      "actions": [
+        {"type": "spawn", "entity": "edu_laranja", "x": 320, "y": 120},
+        {"type": "spawn", "entity": "edu_ghost", "x": 360, "y": 110},
+        {"type": "dialogue", "key": "edu_intro_submundo"},
+        {"type": "cutscene", "key": "edu_cutscene_submundo"},
+        {"type": "set_flag", "name": "edu_main_scene_done", "value": true}
+      ]
+    }
+  ]
+}
