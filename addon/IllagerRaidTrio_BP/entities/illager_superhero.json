@@ -1,0 +1,64 @@
+{
+  "format_version": "1.20.40",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "irt:illager_superhero",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "irt:raid_member": {
+        "minecraft:can_join_raid": {},
+        "minecraft:celebrate_hunt": {}
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": ["illager", "monster"]
+      },
+      "minecraft:nameable": {},
+      "minecraft:health": {
+        "value": 40,
+        "max": 40
+      },
+      "minecraft:movement": {
+        "value": 0.31
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 1.95
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {"cause": "fall", "deals_damage": false}
+        ]
+      },
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:attack": {
+        "damage": 9
+      },
+      "minecraft:behavior.float": {"priority": 0},
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 1,
+        "entity_types": [
+          {"filters": {"test": "is_family", "subject": "other", "value": "player"}, "max_dist": 28},
+          {"filters": {"test": "is_family", "subject": "other", "value": "villager"}, "max_dist": 28},
+          {"filters": {"test": "is_family", "subject": "other", "value": "iron_golem"}, "max_dist": 28}
+        ]
+      },
+      "minecraft:behavior.melee_attack": {"priority": 2, "speed_multiplier": 1.25, "track_target": true},
+      "minecraft:behavior.random_stroll": {"priority": 6, "speed_multiplier": 1.0},
+      "minecraft:behavior.look_at_player": {"priority": 7, "look_distance": 10.0, "probability": 0.07},
+      "minecraft:behavior.random_look_around": {"priority": 8}
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {"component_groups": ["irt:raid_member"]}
+      }
+    }
+  }
+}

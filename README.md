@@ -1,19 +1,16 @@
-# 🎈 Blank app template
+# Illager Raid Trio Addon Downloader
 
-A simple Streamlit app template for you to modify!
+Aplicativo Streamlit que entrega um addon pronto para Minecraft Bedrock com 3 novos illagers para raids:
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+- Illager Palhaço
+- Illager Super-Herói
+- Illager Ninja
 
-### How to run it on your own machine
+## Rodar localmente
 
-1. Install the requirements
+```bash
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
 
-   ```
-   $ pip install -r requirements.txt
-   ```
-
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+Ao abrir a interface, clique em **Baixar addon Illager Raid Trio (.zip)**.
